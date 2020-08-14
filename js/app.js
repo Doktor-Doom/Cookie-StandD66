@@ -60,13 +60,71 @@ class Shop {
   }
 }
 
-
-
 new Shop('Seattle', 23, 65, 6.3);
 new Shop('Tokyo', 3, 24, 1.2);
 new Shop('Dubai', 11, 38, 3.7);
 new Shop('Paris', 20, 38,2.3);
 new Shop('Lima', 2, 16, 4.6);
+
+function makeHeaderRow(){
+  var headTrElement = document.createElement('tr');
+  var thElement = document.createElement('th');
+
+  thElement.textContent = '';
+  headTrElement.appendChild(thElement);
+
+  for(var i = 0; i < hoursArray.length; i++){
+    thElement = document.createElement('th');
+    thElement.textContent = hoursArray[i];
+    headTrElement.appendChild(thElement); 
+  }
+
+  var lastThElement = document.createElement('th');
+  lastThElement.textContent = 'Day Total per Location';
+  headTrElement.appendChild(lastThElement);
+  allTheTables.appendChild(headTrElement);
+}
+
+function makeFooterRow(){
+  var footTrElement = document.createElement('tr');
+  var footThElement = document.createElement('th');
+
+  footThElement.textContent = 'Hour Total all Location';
+  footTrElement.appendChild(footThElement);
+
+  for(var i = 0; i < hoursArray.length; i++){
+    var totalPerHour = 0;
+    // var totalTotal = 0;
+    for(var w = 0; w < allTheStores.length; w++){
+      totalPerHour += allTheStores[w].hourSale[i];
+      // console.log('hour total', totalPerHour);
+      // totalTotal += totalPerHour;
+      // console.log('totalTotal', totalTotal);
+
+    }
+
+    var footTdElement = document.createElement('td');
+    footTdElement.textContent = totalPerHour;
+    footTrElement.appendChild(footTdElement);
+  }
+
+  footThElement = document.createElement('th');
+
+  var totalTotal = 0;
+  for( t = o; t < totalOfTotalsArray.length; t++){
+    totalTotal += totalOfTotalsArray[t];
+  }
+
+  footThElement.textContent = totalTotal;
+  footTrElement.appendChild(footThElement);
+  allTheTables.appendChild(footTrElement);
+}
+
+function renderStores (){
+  for(var i in allTheStores){
+    allTheStores[i].renderTable();
+  }
+}
 
 
 // console.log(hoursArray[i]);
