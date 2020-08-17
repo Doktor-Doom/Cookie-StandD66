@@ -12,6 +12,11 @@ var allTheTables = document.getElementById('shopTable');
 
 var newShop = document.getElementById('newShop');
 
+var sixTotal = 0, sevenTotal = 0, eightTotal = 0, nineTotal = 0, tenTotal = 0, elevenTotal = 0, twelveTotal = 0, oneTotal = 0, TwoTotal = 0, threeTotal = 0, fourTotal = 0, fiveTotal = 0, sixPmTotal = 0, sevenPmTotal = 0;
+
+var allTheStores = [sixTotal, sevenTotal, eightTotal, nineTotal, tenTotal, elevenTotal, twelveTotal, onePmTotal, twoTotal, threeTotal, fourTotal, fiveTotal, sixPmTotal, sevenPmTotal];
+
+
 class Shop {
   constructor(location, minCustie, maxCustie, avgCookieSale) {
     this.location = location;
